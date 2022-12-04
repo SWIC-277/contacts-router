@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/Root";
+import Error from "./routes/Error";
 
 // Keep this outside of component scope so it's not recreated on every render
 const router = createBrowserRouter([
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
 
     // ⚠️ Must be a component, not a function
     element: <Root />,
+    errorElement: <Error />,
   },
 ]);
 
