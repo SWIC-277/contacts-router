@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.jsx"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        spinner: "url('./images/spinner.svg')",
+      },
+    },
   },
   plugins: [],
 };
