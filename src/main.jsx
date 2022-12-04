@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import Root from "./routes/Root";
 
 // Keep this outside of component scope so it's not recreated on every render
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+
+    // ⚠️ Must be a component, not a function
+    element: <Root />,
   },
 ]);
 

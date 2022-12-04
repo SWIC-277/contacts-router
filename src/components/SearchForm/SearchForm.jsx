@@ -7,9 +7,10 @@ export default function SearchForm({ isSearching }) {
       <input
         id="q"
         aria-label="Search contacts"
-        placeholder="Search"
+        placeholder="🔍 Search"
         type="search"
         name="q"
+        className="border-none font-extralight shadow"
       />
 
       {/* ⚠️ Prop Drilling - 🆗 if only 2 levels deep */}

@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  form * {
+    @apply rounded !important;
+  }
+}
+
 @layer components {
   #search-spinner {
     @apply w-4 h-4 absolute left-2 top-3 bg-spinner animate-spin;
+  }
+
+  #side>* {
+    @apply pl-8
   }
 }
