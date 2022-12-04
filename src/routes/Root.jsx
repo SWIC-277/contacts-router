@@ -1,7 +1,7 @@
+import mark from "@/assets/mark.svg";
 import Nav from "@components/Nav";
 import SearchForm from "@components/SearchForm/SearchForm";
 import SubmitForm from "@components/SubmitForm";
-import mark from "@/assets/mark.svg";
 
 export default function Root() {
   return (
