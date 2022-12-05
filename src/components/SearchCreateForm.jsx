@@ -7,7 +7,7 @@ export default function SearchCreateForm() {
   const q = useQ();
 
   return (
-    <Form className="flex px-4">
+    <Form className="flex px-4" method="post">
       <input
         id="q"
         aria-label="Search contacts"
@@ -18,7 +18,7 @@ export default function SearchCreateForm() {
         className="mr-4 border-none font-extralight shadow"
         defaultValue={q}
         onChange={(e) => {
-          submit(e.currentTarget.form);
+          submit(e.currentTarget.form, { method: "get" });
         }}
       />
       <button type="submit" className="bg-sky-500 px-4 py-2 text-white">

@@ -1,6 +1,11 @@
+import capitalize from "lodash.capitalize";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
 import Contact from "./routes/Contact";
 import Error from "./routes/Error";
@@ -10,11 +15,18 @@ import apiService from "./services/api.service";
 const createContact = async ({ request }) => {
   const fd = await request.formData();
 
-  console.log(Object.fromEntries(fd.entries()));
+  // Separate the first and last name from 'q' query parameter
+  const [firstName, lastName] = fd.get("q").split(" ");
+
+  const { id } = await apiService.createContact({
+    firstName: capitalize(firstName),
+    lastName: capitalize(lastName),
+  });
+
+  return redirect(`contacts/${id}`);
 };
 
 const loadContacts = async ({ request }) => {
-  // Only load contacts if there is no query string
   const contacts = await apiService.getContacts();
   return { contacts };
 };
@@ -23,14 +35,14 @@ const loadContacts = async ({ request }) => {
 const router = createBrowserRouter([
   {
     path: "/",
-
-    // ⚠️ Must be a component, not a function
     element: <Root />,
     errorElement: <Error />,
     loader: loadContacts,
-    shouldRevalidate: ({ currentUrl }) =>
-      // Don't revalidate if this is only about a query string
-      !currentUrl.searchParams.has("q"),
+    shouldRevalidate: ({ currentParams, nextUrl }) => {
+      // TODO: ♻️
+      if (nextUrl.searchParams.get("q")) return false;
+      if (currentParams.id) return false;
+    },
     action: createContact,
     children: [
       {
