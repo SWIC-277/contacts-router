@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 export default function Nav() {
   const { contacts, q } = useLoaderData();
 
+  // Only filter if there is a query string
   const filteredContacts = q
     ? contacts.filter(
         (contact) =>
