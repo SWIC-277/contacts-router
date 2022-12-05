@@ -9,6 +9,10 @@
 }
 
 @layer components {
+  .button {
+    @apply rounded-md px-2 py-1 shadow-sm border;
+  }
+
   #search-spinner {
     @apply w-4 h-4 absolute left-2 top-3 bg-spinner animate-spin;
   }
