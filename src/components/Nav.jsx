@@ -6,7 +6,8 @@ export default function Nav() {
   const filteredContacts = q
     ? contacts.filter(
         (contact) =>
-          contact.firstName.includes(q) || contact.lastName.includes(q)
+          contact.firstName.toLowerCase().includes(q.toLowerCase()) ||
+          contact.lastName.toLowerCase().includes(q.toLowerCase())
       )
     : contacts;
 
