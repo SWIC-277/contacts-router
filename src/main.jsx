@@ -2,12 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Root from "./routes/Root";
-import Error from "./routes/Error";
-import apiService from "./services/api.service";
 import Contact from "./routes/Contact";
+import Error from "./routes/Error";
+import Root from "./routes/Root";
+import apiService from "./services/api.service";
 
-const loadContacts = async () => {
+const createContact = async ({ request }) => {
+  const fd = await request.formData();
+
+  console.log(Object.fromEntries(fd.entries()));
+};
+
+const loadContacts = async ({ request }) => {
+  // Only load contacts if there is no query string
   const contacts = await apiService.getContacts();
   return { contacts };
 };
@@ -21,13 +28,14 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Error />,
     loader: loadContacts,
+    shouldRevalidate: ({ currentUrl }) =>
+      // Don't revalidate if this is only about a query string
+      !currentUrl.searchParams.has("q"),
+    action: createContact,
     children: [
       {
         path: "contacts/:id",
         element: <Contact />,
-
-        // Must provide this to 🧒🏾
-        loader: loadContacts,
       },
     ],
   },

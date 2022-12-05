@@ -1,8 +1,7 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useParams, useOutletContext } from "react-router-dom";
 
 export default function Contact() {
-  // Use 'useLoaderData' with the id from the URL params
-  const { contacts } = useLoaderData();
+  const { contacts } = useOutletContext();
   const { id } = useParams();
 
   const clickedContact = contacts.find((contact) => contact.id === id);

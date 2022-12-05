@@ -1,7 +1,9 @@
+import useQ from "@hooks/useQ";
 import { Link, useLoaderData } from "react-router-dom";
 
 export default function Nav() {
-  const { contacts, q } = useLoaderData();
+  const { contacts } = useLoaderData();
+  const q = useQ();
 
   // Only filter if there is a query string
   const filteredContacts = q
