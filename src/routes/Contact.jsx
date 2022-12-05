@@ -1,9 +1,4 @@
-import {
-  Link,
-  useLoaderData,
-  useOutletContext,
-  useParams,
-} from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 
 export default function Contact() {
   const { contacts } = useOutletContext();

@@ -38,11 +38,8 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Error />,
     loader: loadContacts,
-    shouldRevalidate: ({ currentParams, nextUrl }) => {
-      // TODO: ♻️
-      if (nextUrl.searchParams.get("q")) return false;
-      if (currentParams.id) return false;
-    },
+    shouldRevalidate: ({ currentParams, nextUrl }) =>
+      !currentParams.id && !nextUrl.searchParams.get("q"),
     action: createContact,
     children: [
       {
