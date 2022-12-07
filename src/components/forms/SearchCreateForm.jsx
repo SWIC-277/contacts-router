@@ -1,5 +1,6 @@
 import useQ from "@/hooks/useQ";
 import { Form, useSubmit } from "react-router-dom";
+import Input from "./Input";
 
 export default function SearchCreateForm() {
   const submit = useSubmit();
@@ -8,16 +9,12 @@ export default function SearchCreateForm() {
 
   return (
     <Form className="flex px-4" method="post">
-      <input
+      <Input
         id="q"
-        aria-label="Search contacts"
-        placeholder="🔍 Search"
+        label="Search contacts"
         type="search"
-        // Upon submission, 'name' will be a query parameter in the URL
-        name="q"
-        className="mr-4 border-none font-extralight shadow"
         defaultValue={q}
-        onChange={(e) => {
+        handleChange={(e) => {
           submit(e.currentTarget.form, { method: "get" });
         }}
       />
