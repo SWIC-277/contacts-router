@@ -1,7 +1,7 @@
 import mark from "@/assets/mark.svg";
 import Nav from "@components/Nav";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
-import SearchCreateForm from "../components/SearchCreateForm";
+import SearchCreateForm from "@components/SearchCreateForm";
 
 export default function Root() {
   const { contacts } = useLoaderData();
