@@ -28,3 +28,8 @@ Input.propTypes = {
   defaultValue: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
 };
+
+Input.defaultProps = {
+  type: "text",
+  defaultValue: "",
+};
