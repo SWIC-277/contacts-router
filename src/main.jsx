@@ -6,6 +6,7 @@ import {
   redirect,
   RouterProvider,
 } from "react-router-dom";
+import EditForm from "./components/forms/EditForm";
 import "./index.css";
 import Contact from "./routes/Contact";
 import Error from "./routes/Error";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "contacts/:id",
         element: <Contact />,
+      },
+      {
+        path: "contacts/:id/edit",
+        element: <EditForm />,
       },
     ],
   },
