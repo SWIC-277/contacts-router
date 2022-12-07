@@ -1,11 +1,9 @@
 import mark from "@/assets/mark.svg";
-import Nav from "@components/Nav";
-import { Link, Outlet, useLoaderData } from "react-router-dom";
 import SearchCreateForm from "@components/forms/SearchCreateForm";
+import Nav from "@components/Nav";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Root() {
-  const { contacts } = useLoaderData();
-
   return (
     <main className="flex gap-x-4">
       <div
@@ -24,7 +22,7 @@ export default function Root() {
         </div>
         <Nav />
       </div>
-      <Outlet context={{ contacts }} />
+      <Outlet />
     </main>
   );
 }

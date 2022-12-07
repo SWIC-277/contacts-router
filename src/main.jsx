@@ -41,6 +41,7 @@ const router = createBrowserRouter([
     shouldRevalidate: ({ currentParams, nextUrl }) =>
       !currentParams.id && !nextUrl.searchParams.get("q"),
     action: createContact,
+    id: "root",
     children: [
       {
         path: "contacts/:id",
