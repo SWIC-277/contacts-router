@@ -1,10 +1,8 @@
-import { Form, Link, useParams, useRouteLoaderData } from "react-router-dom";
+import useContact from "@hooks/useContact";
+import { Form, Link } from "react-router-dom";
 
 export default function Contact() {
-  const { contacts } = useRouteLoaderData("root");
-  const { id } = useParams();
-
-  const clickedContact = contacts.find((contact) => contact.id === id);
+  const clickedContact = useContact();
 
   return (
     <section className="flex gap-x-6 pt-8">
