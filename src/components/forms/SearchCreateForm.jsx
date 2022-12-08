@@ -20,6 +20,9 @@ export default function SearchCreateForm() {
         id="q"
         label="Search contacts"
         type="search"
+        handleBlur={(e) => {
+          e.currentTarget.form.reset();
+        }}
         handleChange={(e) => {
           submit(e.currentTarget.form, { method: "get" });
         }}

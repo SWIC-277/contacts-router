@@ -7,6 +7,7 @@ export default function Input({
   type,
   defaultValue,
   handleChange,
+  handleBlur,
 }) {
   return (
     <div className="flex flex-col gap-y-2">
@@ -23,6 +24,7 @@ export default function Input({
         className="mr-4 border-none font-extralight shadow"
         defaultValue={defaultValue}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
     </div>
   );
@@ -35,6 +37,7 @@ Input.propTypes = {
   type: PropTypes.oneOf(["text", "search", "email", "tel", "url"]),
   defaultValue: PropTypes.string,
   handleChange: PropTypes.func,
+  handleBlur: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -44,4 +47,5 @@ Input.defaultProps = {
 
   // By default, do nothing
   handleChange: () => {},
+  handleBlur: () => {},
 };
