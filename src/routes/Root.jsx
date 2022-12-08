@@ -7,7 +7,7 @@ export default function Root() {
   return (
     <main className="flex gap-x-4">
       <div
-        className="flex h-screen w-max flex-col gap-y-4 border-r border-slate-400 bg-slate-200 py-4"
+        className="flex h-screen min-h-max w-max flex-col gap-y-4 border-r border-slate-400 bg-slate-200 py-4"
         id="side"
       >
         <header className="order-1 mt-auto flex items-center gap-x-2 border-gray-400">
