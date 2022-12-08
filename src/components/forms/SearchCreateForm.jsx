@@ -7,6 +7,7 @@ export default function SearchCreateForm() {
   return (
     <Form className="flex px-4" method="post">
       <Input
+        // On a GET submission, this will be used as a query parameter
         id="q"
         label="Search contacts"
         type="search"

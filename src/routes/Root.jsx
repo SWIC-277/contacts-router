@@ -22,6 +22,8 @@ export default function Root() {
         </div>
         <Nav />
       </div>
+
+      {/* Placeholder for a child component */}
       <Outlet />
     </main>
   );

@@ -39,6 +39,8 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Error />,
     loader: loadContacts,
+
+    // Prevent unnecessary database calls
     shouldRevalidate: ({ currentParams, nextUrl }) => {
       // Don't revalidate if this is just an update to the 'q' query parameter
       // Don't revalidate if this is just clicking on a contact (:id)
@@ -46,6 +48,9 @@ const router = createBrowserRouter([
     },
     action: createContact,
     id: "root",
+
+    // These will be rendered in the Root Outlet
+    // ':id' can be accessed via useParams()
     children: [
       {
         path: "contacts/:id",
