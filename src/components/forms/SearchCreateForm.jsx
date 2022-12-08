@@ -5,7 +5,16 @@ export default function SearchCreateForm() {
   const submit = useSubmit();
 
   return (
-    <Form className="flex px-4" method="post">
+    <Form
+      className="flex px-4"
+      method="post"
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit(e.target, { method: "post" });
+        e.target.reset();
+      }}
+    >
+      {/* TODO: Clear this input after navigating to a contact */}
       <Input
         // On a GET submission, this will be used as a query parameter
         id="q"
