@@ -24,7 +24,7 @@ const createContact = async ({ request }) => {
     lastName: capitalize(lastName),
   });
 
-  return redirect(`contacts/${id}`);
+  return redirect(`/contacts/${id}`);
 };
 
 const editContact = async ({ request, params }) => {
@@ -36,6 +36,7 @@ const editContact = async ({ request, params }) => {
     ...updatedContact,
   });
 
+  // '/' means absolute path - starting from the localhost:5173/
   return redirect(`/contacts/${params.id}`);
 };
 
@@ -53,7 +54,9 @@ const router = createBrowserRouter([
     loader: loadContacts,
 
     // Prevent unnecessary database calls
-    shouldRevalidate: ({ currentParams, nextUrl }) => {
+    shouldRevalidate: ({ currentParams, currentUrl, nextUrl }) => {
+      if (currentUrl.pathname.endsWith("edit")) return true;
+
       // Don't revalidate if this is just an update to the 'q' query parameter
       // Don't revalidate if this is just clicking on a contact (:id)
       return !currentParams.id && !nextUrl.searchParams.get("q");
