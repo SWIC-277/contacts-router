@@ -40,6 +40,11 @@ const editContact = async ({ request, params }) => {
   return redirect(`/contacts/${params.id}`);
 };
 
+const deleteContact = async ({ params }) => {
+  await apiService.deleteContact(params.id);
+  return redirect("/");
+};
+
 const loadContacts = async () => {
   const contacts = await apiService.getContacts();
   return { contacts };
@@ -75,6 +80,10 @@ const router = createBrowserRouter([
         path: "contacts/:id/edit",
         element: <EditForm />,
         action: editContact,
+      },
+      {
+        path: "contacts/:id/delete",
+        action: deleteContact,
       },
     ],
   },
