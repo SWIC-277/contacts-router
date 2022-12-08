@@ -27,6 +27,18 @@ const createContact = async ({ request }) => {
   return redirect(`contacts/${id}`);
 };
 
+const editContact = async ({ request, params }) => {
+  const fd = await request.formData();
+  const updatedContact = Object.fromEntries(fd.entries());
+
+  await apiService.updateContact({
+    id: params.id,
+    ...updatedContact,
+  });
+
+  return redirect(`/contacts/${params.id}`);
+};
+
 const loadContacts = async () => {
   const contacts = await apiService.getContacts();
   return { contacts };
@@ -59,6 +71,7 @@ const router = createBrowserRouter([
       {
         path: "contacts/:id/edit",
         element: <EditForm />,
+        action: editContact,
       },
     ],
   },
